@@ -1,0 +1,106 @@
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: "woodmart-font";
+	src: url("//greatprofile.cl/RectorUdec/wp-content/themes/woodmart/fonts/woodmart-font-1-400.woff2?v=8.1.2") format("woff2");
+}
+
+:root {
+	--wd-text-font: "Poppins", Arial, Helvetica, sans-serif;
+	--wd-text-font-weight: 400;
+	--wd-text-color: rgb(145,145,145);
+	--wd-text-font-size: 16px;
+	--wd-title-font: "Montserrat", Arial, Helvetica, sans-serif;
+	--wd-title-font-weight: 700;
+	--wd-title-color: rgb(3,52,106);
+	--wd-entities-title-font: "Montserrat", Arial, Helvetica, sans-serif;
+	--wd-entities-title-font-weight: 600;
+	--wd-entities-title-color: rgb(3,52,106);
+	--wd-entities-title-color-hover: rgb(255, 163, 0);
+	--wd-widget-title-font: "Poppins", Arial, Helvetica, sans-serif;
+	--wd-widget-title-font-weight: 600;
+	--wd-widget-title-transform: capitalize;
+	--wd-widget-title-color: rgb(3,52,106);
+	--wd-widget-title-font-size: 16px;
+	--wd-header-el-font: "Poppins", Arial, Helvetica, sans-serif;
+	--wd-header-el-font-weight: 600;
+	--wd-header-el-transform: uppercase;
+	--wd-header-el-font-size: 16px;
+	--wd-primary-color: rgb(0,50,105);
+	--wd-alternative-color: rgb(255,163,0);
+	--wd-link-color: rgb(255,255,255);
+	--wd-link-color-hover: rgb(255,163,0);
+	--btn-default-bgcolor: #f7f7f7;
+	--btn-default-bgcolor-hover: #efefef;
+	--btn-accented-bgcolor: rgb(0,50,105);
+	--btn-accented-bgcolor-hover: rgb(255,163,0);
+	--btn-transform: capitalize;
+	--wd-form-brd-width: 2px;
+	--notices-success-bg: #459647;
+	--notices-success-color: #fff;
+	--notices-warning-bg: #E0B252;
+	--notices-warning-color: #fff;
+}
+.wd-popup.wd-age-verify {
+	--wd-popup-width: 500px;
+}
+.wd-popup.wd-promo-popup {
+	background-color: rgb(245,245,245);
+	background-image: url(https://greatprofile.cl/RectorUdec/wp-content/uploads/2023/03/p-bg-3.jpg);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: left center;
+	--wd-popup-width: 800px;
+}
+.woodmart-woocommerce-layered-nav .wd-scroll-content {
+	max-height: 223px;
+}
+.wd-page-title {
+	background-color: #0a0a0a;
+	background-image: none;
+	background-size: cover;
+	background-position: center center;
+}
+.wd-footer {
+	background-color: rgb(233,235,239);
+	background-image: none;
+}
+html .wd-nav-mobile > li > a {
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	text-transform: capitalize;
+}
+.page .wd-page-content {
+	background-color: rgb(245,245,245);
+	background-image: none;
+}
+.wd-popup.popup-quick-view {
+	--wd-popup-width: 920px;
+}
+:root{
+--wd-container-w: 1222px;
+--wd-form-brd-radius: 0px;
+--btn-default-color: #333;
+--btn-default-color-hover: #333;
+--btn-accented-color: #fff;
+--btn-accented-color-hover: #fff;
+--btn-default-brd-radius: 0px;
+--btn-default-box-shadow: none;
+--btn-default-box-shadow-hover: none;
+--btn-default-box-shadow-active: none;
+--btn-default-bottom: 0px;
+--btn-accented-brd-radius: 0px;
+--btn-accented-box-shadow: none;
+--btn-accented-box-shadow-hover: none;
+--btn-accented-box-shadow-active: none;
+--btn-accented-bottom: 0px;
+--wd-brd-radius: 0px;
+}
+
+@media (min-width: 1222px) {
+section.elementor-section.wd-section-stretch > .elementor-container {
+margin-left: auto;
+margin-right: auto;
+}
+}
+
+
