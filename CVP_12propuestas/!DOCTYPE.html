@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rectoría 2026: Propuesta Institucional</title>
+    <!-- Fuentes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* =========================================
+           SISTEMA DE DISEÑO
+           ========================================= */
+        :root {
+            --cvp-blue: #0A225F;
+            --cvp-blue-dark: #05143a;
+            --cvp-orange: #FFC107;
+            --text-main: #111827;
+            --text-secondary: #4B5563;
+            --bg-slide: #F9FAFB;
+            --grid-line: #E5E7EB;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        html, body {
+            margin: 0; padding: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--cvp-blue-dark);
+            height: 100%;
+            overflow: hidden; 
+        }
+
+        /* Contenedor Principal */
+        #slides-wrapper {
+            height: 100vh;
+            height: 100dvh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        /* Estructura Slide */
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            position: relative;
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            background-color: white;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            border-bottom: 1px solid var(--grid-line);
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: linear-gradient(180deg, var(--cvp-blue) 0%, var(--cvp-blue-dark) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3vh 0;
+            color: white;
+            z-index: 50;
+            height: 100%;
+        }
+
+        .logo-mark {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--cvp-orange);
+        }
+
+        .slide-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            opacity: 0.8;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+        }
+
+        .progress-bar {
+            width: 2px;
+            height: 15vh;
+            background: rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .progress-fill {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%;
+            background: var(--cvp-orange);
+            transition: height 0.5s ease;
+        }
+
+        /* Layout Grid */
+        .main-content {
+            display: grid;
+            grid-template-columns: 0.4fr 0.6fr;
+            height: 100%;
+            width: 100%;
+        }
+
+        .main-content.full-screen {
+            grid-template-columns: 1fr;
+        }
+
+        /* Columnas */
+        .col-left {
+            padding: 8vh 4vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid var(--grid-line);
+            background: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .col-right {
+            padding: 8vh 6vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: radial-gradient(circle at top right, #f3f4f6, #F9FAFB);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Tipografía */
+        .chapter-label {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--cvp-orange);
+            margin-bottom: 2vh;
+            display: block;
+        }
+
+        .headline {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: clamp(1.8rem, 3.5vw, 4rem);
+            line-height: 1.1;
+            color: var(--cvp-blue);
+            letter-spacing: -1px;
+            margin-bottom: 3vh;
+        }
+
+        .problem-box {
+            border-left: 4px solid #EF4444;
+            padding: 1.25rem;
+            background: linear-gradient(90deg, #FEF2F2 0%, white 100%);
+            border-radius: 0 8px 8px 0;
+            margin-top: 2vh;
+        }
+
+        .problem-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #DC2626;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .problem-text {
+            font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Componentes */
+        .measures-list {
+            list-style: none; padding: 0; margin: 0;
+            display: flex; flex-direction: column; gap: 1.5vh;
+        }
+
+        .measure-item {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            border: 1px solid var(--grid-line);
+            display: flex; align-items: flex-start; gap: 1rem;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .measure-item:hover {
+            transform: translateX(5px);
+            border-left: 4px solid var(--cvp-blue);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .measure-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: var(--cvp-orange);
+            font-size: 1.2rem;
+            min-width: 25px;
+        }
+
+        .impact-box {
+            margin-top: 4vh;
+            background: var(--cvp-blue);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(10, 34, 95, 0.4);
+        }
+
+        .impact-label {
+            font-size: 0.7rem; text-transform: uppercase;
+            letter-spacing: 2px; opacity: 0.8; margin-bottom: 0.5rem;
+            display: block; font-weight: 700;
+        }
+
+        .impact-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1rem, 1.3vw, 1.4rem);
+            font-weight: 600; line-height: 1.3; margin: 0;
+        }
+
+        .impact-highlight { color: var(--cvp-orange); }
+
+        .back-to-hub {
+            display: inline-flex; align-items: center; margin-top: 1.5rem;
+            font-size: 0.85rem; font-weight: 600; color: var(--cvp-blue);
+            cursor: pointer; transition: all 0.2s; background: white;
+            padding: 8px 16px; border-radius: 50px; border: 1px solid var(--cvp-blue);
+        }
+        .back-to-hub:hover { transform: translateX(-3px); background: var(--bg-slide); }
+
+        .bg-emoji {
+            position: absolute; bottom: -5%; right: -5%;
+            font-size: 20vw; opacity: 0.05; filter: grayscale(100%);
+            pointer-events: none; z-index: 0;
+        }
+
+        /* --- ESTILOS ESPECÍFICOS SVG HUB --- */
+        .svg-hub-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: visible;
+            position: relative;
+        }
+
+        .hub-bg {
+            width: 100%;
+            height: 100%;
+            max-height: 90vh; 
+            max-width: 90vw;
+            /* Asegura que se vea todo el vector */
+            overflow: visible; 
+            pointer-events: none;
+        }
+
+        /* El SVG incrustado como <object> debe recibir los clics */
+        object.hub-bg {
+            pointer-events: auto;
+        }
+
+        .hub-hotspots {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            max-height: 90vh;
+            max-width: 90vw;
+            overflow: visible;
+            pointer-events: none;
+        }
+
+        .hub-hotspot {
+            position: absolute;
+            pointer-events: auto;
+            cursor: pointer;
+            /* hitbox transparente sobre cada botón */
+            background: rgba(255,0,0,0);
+        }
+
+        /* Interactividad SVG */
+        g[id^="BTN_"] {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        g[id^="BTN_"]:hover {
+            opacity: 0.8;
+            filter: drop-shadow(0px 5px 15px rgba(255, 193, 7, 0.4));
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .slide-container {
+                display: flex; flex-direction: column; height: auto; min-height: 100dvh;
+            }
+            .sidebar {
+                width: 100%; height: 50px; flex-direction: row;
+                padding: 0 20px; position: sticky; top: 0; order: -1;
+            }
+            .sidebar .progress-bar { display: none; }
+            .sidebar .slide-number { writing-mode: horizontal-tb; transform: none; }
+            
+            .main-content { display: flex; flex-direction: column; height: auto; }
+            .col-left { border-right: none; padding: 2rem 1.5rem; }
+            .col-right { padding: 2rem 1.5rem; min-height: 400px; }
+
+            /* En móvil, ocultamos el SVG complejo y mostramos la lista */
+            .svg-hub-wrapper { display: none; }
+            .mobile-hub-list { display: flex !important; }
+        }
+
+        /* Lista móvil para el Hub (Oculta en desktop) */
+        .mobile-hub-list {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            padding: 20px;
+            gap: 15px;
+        }
+        
+        .mobile-hub-btn {
+            background: white; border: 1px solid var(--grid-line);
+            border-left: 4px solid var(--cvp-blue);
+            padding: 15px; border-radius: 8px;
+            font-weight: 700; color: var(--cvp-blue);
+            text-transform: uppercase; font-size: 0.9rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .mobile-hub-btn::after { content: '→'; opacity: 0.5; }
+
+        /* Animaciones */
+        .reveal-element {
+            opacity: 1; transform: translateY(0);
+            transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .will-animate { opacity: 0 !important; transform: translateY(20px) !important; }
+    </style>
+</head>
+<body>
+
+<div id="slides-wrapper">
+
+    <!-- SLIDE 1: MARCO GENERAL -->
+    <div class="slide-container" id="slide-1">
+        <div class="sidebar">
+            <div class="logo-mark reveal-element">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 8%;"></div></div>
+            <div class="slide-number">01 / 12</div>
+        </div>
+        <div class="main-content">
+            <div class="col-left">
+                <span class="chapter-label reveal-element">Marco General</span>
+                <h1 class="headline reveal-element delay-1">Rectoría 2026:<br>devolver tiempo a lo académico</h1>
+                <div class="problem-box reveal-element delay-2">
+                    <span class="problem-label">Problema actual</span>
+                    <p class="problem-text">Mucho esfuerzo se va en burocracia y fricciones, no en docencia/investigación.</p>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="bg-emoji">⏳</div>
+                <div class="measures-container">
+                    <ul class="measures-list">
+                        <li class="measure-item reveal-element delay-2">
+                            <span class="measure-number">01</span>
+                            <span class="measure-text">“Devolver tiempo” como criterio institucional.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">02</span>
+                            <span class="measure-text">Prioridad a carga/carrera/infraestructura.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">03</span>
+                            <span class="measure-text">Apoyo profesional donde hoy el académico hace de gestor.</span>
+                        </li>
+                    </ul>
+                    <div class="impact-box reveal-element delay-4">
+                        <span class="impact-label">Lo que el académico verá (6–12 meses)</span>
+                        <p class="impact-text">Menos trámites, <span class="impact-highlight">más productividad</span>, mejor calidad de vida académica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: ESQUEMA INSTITUCIONAL (SVG HUB) -->
+    <div class="slide-container" id="slide-2">
+        <div class="sidebar">
+            <div class="logo-mark">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 16%;"></div></div>
+            <div class="slide-number">02 / 13</div>
+        </div>
+        <div class="main-content full-screen bg-gray-50">
+            
+            <!-- SVG INTERACTIVO: EL PROPIO SVG CONTIENE LOS HANDLERS DE LOS BOTONES -->
+            <div class="svg-hub-wrapper reveal-element">
+                <object type="image/svg+xml" data="ESQUEMA INSTITUCIONAL2.svg" class="hub-bg"></object>
+            </div>
+
+            <!-- VERSIÓN MÓVIL: LISTA (MEJOR UX EN TELÉFONO) -->
+            <div class="mobile-hub-list">
+                <h2 class="text-xl font-black text-blue-900 mb-2">NAVEGACIÓN</h2>
+                <div onclick="goToSlide(3)" class="mobile-hub-btn">C.A.</div>
+                <div onclick="goToSlide(4)" class="mobile-hub-btn">GOBERNANZA</div>
+                <div onclick="goToSlide(5)" class="mobile-hub-btn">I&amp;D+i+C</div>
+                <div onclick="goToSlide(6)" class="mobile-hub-btn">INFRAESTRUCTURA</div>
+                <div onclick="goToSlide(7)" class="mobile-hub-btn">FINANZAS</div>
+                <div onclick="goToSlide(8)" class="mobile-hub-btn">CARRERA ACADÉMICA</div>
+                <div onclick="goToSlide(9)" class="mobile-hub-btn">PREGRADO</div>
+                <div onclick="goToSlide(10)" class="mobile-hub-btn">POSTGRADO</div>
+                <div onclick="goToSlide(11)" class="mobile-hub-btn">VINCULACIÓN</div>
+                <div onclick="goToSlide(12)" class="mobile-hub-btn">TRANSFORMACIÓN DIGITAL</div>
+                <div onclick="goToSlide(13)" class="mobile-hub-btn">ACREDITACIÓN / CIERRE</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SLIDE 3: C.A. -->
+    <div class="slide-container" id="slide-3">
+        <div class="sidebar">
+            <div class="logo-mark">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 25%;"></div></div>
+            <div class="slide-number">03 / 13</div>
+        </div>
+        <div class="main-content">
+            <div class="col-left">
+                <span class="chapter-label reveal-element">EJE ACTIVO: C.A.</span>
+                <h1 class="headline reveal-element delay-1">3 compromisos transversales medibles</h1>
+                <div class="problem-box reveal-element delay-2">
+                    <span class="problem-label">Problema</span>
+                    <p class="problem-text">Las promesas quedan difusas si no tienen regla y seguimiento.</p>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="bg-emoji">📏</div>
+                <div class="measures-container">
+                    <ul class="measures-list">
+                        <li class="measure-item reveal-element delay-2">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Regla “no se implementa si no reduce pasos”.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Registro único académico (reutilizable).</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Estándares mínimos para aula/lab + mantención con respuesta.</span>
+                        </li>
+                    </ul>
+                    <div class="impact-box reveal-element delay-4">
+                        <span class="impact-label">Lo que el académico verá (6–12 meses)</span>
+                        <p class="impact-text">Cambios visibles en semanas: <span class="impact-highlight">menos duplicidad</span>, mejor soporte, menos interrupciones.</p>
+                    </div>
+                    <div onclick="goToSlide(2)" class="back-to-hub reveal-element delay-4">← Volver al Esquema</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: GOBERNANZA -->
+    <div class="slide-container" id="slide-4">
+        <div class="sidebar">
+            <div class="logo-mark">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 33%;"></div></div>
+            <div class="slide-number">04 / 13</div>
+        </div>
+        <div class="main-content">
+            <div class="col-left">
+                <span class="chapter-label reveal-element">EJE ACTIVO: GOBERNANZA</span>
+                <h1 class="headline reveal-element delay-1">Gobernanza que devuelve horas</h1>
+                <div class="problem-box reveal-element delay-2">
+                    <span class="problem-label">Problema</span>
+                    <p class="problem-text">Decisiones lentas y trámites sin responsable/plazo.</p>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="bg-emoji">🏛️</div>
+                <div class="measures-container">
+                    <ul class="measures-list">
+                        <li class="measure-item reveal-element delay-2">
+                            <span class="measure-number">01</span>
+                            <span class="measure-text">1 trámite–1 responsable–1 plazo (trazable).</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">02</span>
+                            <span class="measure-text">Calendario anual de decisiones académicas.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">03</span>
+                            <span class="measure-text">Eliminación de reportes duplicados.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">04</span>
+                            <span class="measure-text">Ventanilla única para solicitudes académicas.</span>
+                        </li>
+                    </ul>
+                    <div class="impact-box reveal-element delay-4">
+                        <span class="impact-label">Lo que el académico verá (6–12 meses)</span>
+                        <p class="impact-text">Menos correos “perdidos”, decisiones previsibles, <span class="impact-highlight">horas liberadas</span>.</p>
+                    </div>
+                    <div onclick="goToSlide(2)" class="back-to-hub reveal-element delay-4">← Volver al Esquema</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: I&amp;D+i+C -->
+    <div class="slide-container" id="slide-5">
+        <div class="sidebar">
+            <div class="logo-mark">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 41%;"></div></div>
+            <div class="slide-number">05 / 13</div>
+        </div>
+        <div class="main-content">
+            <div class="col-left">
+                <span class="chapter-label reveal-element">EJE ACTIVO: I&amp;D+i+C</span>
+                <h1 class="headline reveal-element delay-1">Investigación: apoyo “pre-award” que se nota</h1>
+                <div class="problem-box reveal-element delay-2">
+                    <span class="problem-label">Problema</span>
+                    <p class="problem-text">Postular consume tiempo y falla por falta de apoyo temprano.</p>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="bg-emoji">🔬</div>
+                <div class="measures-container">
+                    <ul class="measures-list">
+                        <li class="measure-item reveal-element delay-2">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Pre-award por macroárea/facultad (metodología + presupuesto + narrativa).</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Fondo rápido de datos preliminares.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Banco de plantillas (ética, presupuesto, gestión de datos).</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Mentoría con horas reconocidas.</span>
+                        </li>
+                    </ul>
+                    <div class="impact-box reveal-element delay-4">
+                        <span class="impact-label">Lo que el académico verá (6–12 meses)</span>
+                        <p class="impact-text">Más proyectos adjudicados, <span class="impact-highlight">menos desgaste</span>, continuidad de líneas.</p>
+                    </div>
+                    <div onclick="goToSlide(2)" class="back-to-hub reveal-element delay-4">← Volver al Esquema</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: INFRAESTRUCTURA -->
+    <div class="slide-container" id="slide-6">
+        <div class="sidebar">
+            <div class="logo-mark">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 50%;"></div></div>
+            <div class="slide-number">06 / 13</div>
+        </div>
+        <div class="main-content">
+            <div class="col-left">
+                <span class="chapter-label reveal-element">EJE ACTIVO: INFRAESTRUCTURA</span>
+                <h1 class="headline reveal-element delay-1">Infraestructura: estándar mínimo garantizado</h1>
+                <div class="problem-box reveal-element delay-2">
+                    <span class="problem-label">Problema</span>
+                    <p class="problem-text">Aulas/labs con brechas y mantención reactiva que detiene docencia/lab.</p>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="bg-emoji">🏗️</div>
+                <div class="measures-container">
+                    <ul class="measures-list">
+                        <li class="measure-item reveal-element delay-2">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Estándar mínimo por aula/lab (seguridad, conectividad, equipamiento base).</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Mantención con ticketing y tiempos de respuesta.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Agenda única para acceso a equipamiento + soporte.</span>
+                        </li>
+                    </ul>
+                    <div class="impact-box reveal-element delay-4">
+                        <span class="impact-label">Lo que el académico verá (6–12 meses)</span>
+                        <p class="impact-text">Menos clases/labs interrumpidos; <span class="impact-highlight">mejor continuidad experimental</span>.</p>
+                    </div>
+                    <div onclick="goToSlide(2)" class="back-to-hub reveal-element delay-4">← Volver al Esquema</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: FINANZAS -->
+    <div class="slide-container" id="slide-7">
+        <div class="sidebar">
+            <div class="logo-mark">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 58%;"></div></div>
+            <div class="slide-number">07 / 13</div>
+        </div>
+        <div class="main-content">
+            <div class="col-left">
+                <span class="chapter-label reveal-element">EJE ACTIVO: FINANZAS</span>
+                <h1 class="headline reveal-element delay-1">Finanzas al servicio de lo académico</h1>
+                <div class="problem-box reveal-element delay-2">
+                    <span class="problem-label">Problema</span>
+                    <p class="problem-text">Incertidumbre presupuestaria y prioridades poco claras para docencia/I+D.</p>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="bg-emoji">💰</div>
+                <div class="measures-container">
+                    <ul class="measures-list">
+                        <li class="measure-item reveal-element delay-2">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Presupuesto protegido para mantención crítica + bibliotecas/recursos + plataformas I+D + apoyo a postulación.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Compromisos multianuales con criterios públicos.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Fondo interno rápido para impacto académico verificable.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Tablero simple de ejecución y prioridades.</span>
+                        </li>
+                    </ul>
+                    <div class="impact-box reveal-element delay-4">
+                        <span class="impact-label">Lo que el académico verá (6–12 meses)</span>
+                        <p class="impact-text">Continuidad de apoyo; <span class="impact-highlight">inversión visible</span> en condiciones académicas.</p>
+                    </div>
+                    <div onclick="goToSlide(2)" class="back-to-hub reveal-element delay-4">← Volver al Esquema</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: CARRERA ACADÉMICA -->
+    <div class="slide-container" id="slide-8">
+        <div class="sidebar">
+            <div class="logo-mark">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 66%;"></div></div>
+            <div class="slide-number">08 / 13</div>
+        </div>
+        <div class="main-content">
+            <div class="col-left">
+                <span class="chapter-label reveal-element">EJE ACTIVO: CARRERA</span>
+                <h1 class="headline reveal-element delay-1">Carrera académica clara y carga justa</h1>
+                <div class="problem-box reveal-element delay-2">
+                    <span class="problem-label">Problema</span>
+                    <p class="problem-text">Sobrecarga + carrera poco predecible + brechas de reconocimiento.</p>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="bg-emoji">📈</div>
+                <div class="measures-container">
+                    <ul class="measures-list">
+                        <li class="measure-item reveal-element delay-2">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Modelo transparente de carga (docencia–investigación–gestión).</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Tiempo protegido en etapas críticas y posadjudicación.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Regularización de docencia estructural vía concursos.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Plan de brechas salariales con criterios públicos.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Menos comités/informes sin impacto.</span>
+                        </li>
+                    </ul>
+                    <div class="impact-box reveal-element delay-4">
+                        <span class="impact-label">Lo que el académico verá (6–12 meses)</span>
+                        <p class="impact-text">Menos horas invisibles; <span class="impact-highlight">trayectoria e ingresos</span> más previsibles.</p>
+                    </div>
+                    <div onclick="goToSlide(2)" class="back-to-hub reveal-element delay-4">← Volver al Esquema</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 9: PREGRADO -->
+    <div class="slide-container" id="slide-9">
+        <div class="sidebar">
+            <div class="logo-mark">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 73%;"></div></div>
+            <div class="slide-number">09 / 13</div>
+        </div>
+        <div class="main-content">
+            <div class="col-left">
+                <span class="chapter-label reveal-element">EJE ACTIVO: PREGRADO</span>
+                <h1 class="headline reveal-element delay-1">Pregrado: docencia con apoyo real</h1>
+                <div class="problem-box reveal-element delay-2">
+                    <span class="problem-label">Problema</span>
+                    <p class="problem-text">Cursos masivos y evaluación difícil sin soporte operativo.</p>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="bg-emoji">🎓</div>
+                <div class="measures-container">
+                    <ul class="measures-list">
+                        <li class="measure-item reveal-element delay-2">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Equipos de apoyo docente para cursos críticos (ayudantías + soporte técnico).</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Evaluación practicable (menos “cumplimiento”, más instrumentos útiles).</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Formación docente aplicada con soporte de rediseño.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Reglas claras IA en evaluación/autoría.</span>
+                        </li>
+                    </ul>
+                    <div class="impact-box reveal-element delay-4">
+                        <span class="impact-label">Impacto</span>
+                        <p class="impact-text">Mejor calidad docente con <span class="impact-highlight">menos carga</span>; evaluación sostenible.</p>
+                    </div>
+                    <div onclick="goToSlide(2)" class="back-to-hub reveal-element delay-4">← Volver al Esquema</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 10: POSTGRADO -->
+    <div class="slide-container" id="slide-10">
+        <div class="sidebar">
+            <div class="logo-mark">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 81%;"></div></div>
+            <div class="slide-number">10 / 13</div>
+        </div>
+        <div class="main-content">
+            <div class="col-left">
+                <span class="chapter-label reveal-element">EJE ACTIVO: POSTGRADO</span>
+                <h1 class="headline reveal-element delay-1">Postgrado: supervisión sostenible y becas claras</h1>
+                <div class="problem-box reveal-element delay-2">
+                    <span class="problem-label">Problema</span>
+                    <p class="problem-text">Supervisión sobrecargada + incertidumbre de financiamiento + trámites.</p>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="bg-emoji">📜</div>
+                <div class="measures-container">
+                    <ul class="measures-list">
+                        <li class="measure-item reveal-element delay-2">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Norma orientativa de carga máxima de supervisión.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Becas/apoyos con reglas y plazos claros.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Fondo competitivo apoyo tesis/publicación cuando no hay proyecto.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Mediación formal en conflictos de supervisión.</span>
+                        </li>
+                    </ul>
+                    <div class="impact-box reveal-element delay-4">
+                        <span class="impact-label">Lo que el académico verá (6–12 meses)</span>
+                        <p class="impact-text">Mejor graduación oportuna; menos fricciones; <span class="impact-highlight">supervisión sana</span>.</p>
+                    </div>
+                    <div onclick="goToSlide(2)" class="back-to-hub reveal-element delay-4">← Volver al Esquema</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 11: VINCULACIÓN -->
+    <div class="slide-container" id="slide-11">
+        <div class="sidebar">
+            <div class="logo-mark">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 89%;"></div></div>
+            <div class="slide-number">11 / 13</div>
+        </div>
+        <div class="main-content">
+            <div class="col-left">
+                <span class="chapter-label reveal-element">EJE ACTIVO: VINCULACIÓN</span>
+                <h1 class="headline reveal-element delay-1">VcM que cuenta en la carrera (sin carga administrativa)</h1>
+                <div class="problem-box reveal-element delay-2">
+                    <span class="problem-label">Problema</span>
+                    <p class="problem-text">VcM consume tiempo y a veces no se reconoce en evaluación.</p>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="bg-emoji">🤝</div>
+                <div class="measures-container">
+                    <ul class="measures-list">
+                        <li class="measure-item reveal-element delay-2">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">VcM con retorno académico (datos, casos, prácticas, papers, innovación docente).</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Criterios explícitos de reconocimiento en evaluación.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Soporte profesional para convenios, rendiciones y seguimiento.</span>
+                        </li>
+                    </ul>
+                    <div class="impact-box reveal-element delay-4">
+                        <span class="impact-label">Lo que el académico verá (6–12 meses)</span>
+                        <p class="impact-text">VcM deja de ser “trabajo invisible” y se transforma en <span class="impact-highlight">mérito</span>.</p>
+                    </div>
+                    <div onclick="goToSlide(2)" class="back-to-hub reveal-element delay-4">← Volver al Esquema</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 12: TRANSFORMACIÓN DIGITAL -->
+    <div class="slide-container" id="slide-12">
+        <div class="sidebar">
+            <div class="logo-mark">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 96%;"></div></div>
+            <div class="slide-number">12 / 13</div>
+        </div>
+        <div class="main-content">
+            <div class="col-left">
+                <span class="chapter-label reveal-element">EJE ACTIVO: TRANSFORMACIÓN DIGITAL</span>
+                <h1 class="headline reveal-element delay-1">Transformación digital: solo lo que ahorra horas</h1>
+                <div class="problem-box reveal-element delay-2">
+                    <span class="problem-label">Problema</span>
+                    <p class="problem-text">Plataformas que agregan pasos y duplican reportes.</p>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="bg-emoji">💻</div>
+                <div class="measures-container">
+                    <ul class="measures-list">
+                        <li class="measure-item reveal-element delay-2">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Regla institucional: si no reduce pasos, no va.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-3">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Registro único académico que autogenera informes.</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Flujos digitales para trámites típicos (proyectos, compras menores, viajes, rendiciones).</span>
+                        </li>
+                        <li class="measure-item reveal-element delay-4">
+                            <span class="measure-number">•</span>
+                            <span class="measure-text">Mesa de ayuda con SLA.</span>
+                        </li>
+                    </ul>
+                    <div class="impact-box reveal-element delay-4">
+                        <span class="impact-label">Lo que el académico verá (6–12 meses)</span>
+                        <p class="impact-text">Menos copiar/pegar; trámites más rápidos; <span class="impact-highlight">soporte que responde</span>.</p>
+                    </div>
+                    <div onclick="goToSlide(2)" class="back-to-hub reveal-element delay-4">← Volver al Esquema</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 13: ACREDITACIÓN / CIERRE -->
+    <div class="slide-container" id="slide-13">
+        <div class="sidebar">
+            <div class="logo-mark">CVP</div>
+            <div class="progress-bar"><div class="progress-fill" style="height: 100%;"></div></div>
+            <div class="slide-number">13 / 13</div>
+        </div>
+        <div class="main-content">
+            <div class="col-left">
+                <span class="chapter-label reveal-element">EJE ACTIVO: ACREDITACIÓN / CIERRE</span>
+                <h1 class="headline reveal-element delay-1">Primeros 120 días: 6 cambios visibles</h1>
+                <div class="problem-box reveal-element delay-2">
+                    <span class="problem-label">Problema</span>
+                    <p class="problem-text">Si no hay hitos rápidos, la comunidad no percibe mejora.</p>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="bg-emoji">🚀</div>
+                <div class="measures-container">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                        <div class="bg-white p-3 md:p-4 border border-gray-200 rounded-lg shadow-sm reveal-element delay-2">
+                            <strong class="text-blue-900 block mb-1">01. Trámite</strong>
+                            <span class="text-sm text-gray-600">Lanzar regla “1 trámite–1 responsable–1 plazo”.</span>
+                        </div>
+                        <div class="bg-white p-3 md:p-4 border border-gray-200 rounded-lg shadow-sm reveal-element delay-2">
+                            <strong class="text-blue-900 block mb-1">02. Pre-award</strong>
+                            <span class="text-sm text-gray-600">Instalar pre-award en macroáreas piloto.</span>
+                        </div>
+                        <div class="bg-white p-3 md:p-4 border border-gray-200 rounded-lg shadow-sm reveal-element delay-3">
+                            <strong class="text-blue-900 block mb-1">03. Mantención</strong>
+                            <span class="text-sm text-gray-600">Ticketing + SLA de respuesta.</span>
+                        </div>
+                        <div class="bg-white p-3 md:p-4 border border-gray-200 rounded-lg shadow-sm reveal-element delay-3">
+                            <strong class="text-blue-900 block mb-1">04. Carga</strong>
+                            <span class="text-sm text-gray-600">Propuesta de modelo transparente de carga (borrador + pilotos).</span>
+                        </div>
+                        <div class="bg-white p-3 md:p-4 border border-gray-200 rounded-lg shadow-sm reveal-element delay-4">
+                            <strong class="text-blue-900 block mb-1">05. Digital</strong>
+                            <span class="text-sm text-gray-600">Registro único académico (MVP).</span>
+                        </div>
+                        <div class="bg-white p-3 md:p-4 border border-gray-200 rounded-lg shadow-sm reveal-element delay-4">
+                            <strong class="text-blue-900 block mb-1">06. Infra</strong>
+                            <span class="text-sm text-gray-600">Estándares mínimos aula/lab priorizados.</span>
+                        </div>
+                    </div>
+                    <div class="impact-box reveal-element delay-4 mt-6">
+                        <span class="impact-label">Lo que el académico verá (6–12 meses)</span>
+                        <p class="impact-text">Señales claras: menos fricción, apoyo temprano a proyectos, y continuidad en docencia/lab.</p>
+                    </div>
+                    <div onclick="goToSlide(2)" class="back-to-hub reveal-element delay-4">← Volver al Esquema</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // 1. Detección segura de JS para animaciones
+        const revealElements = document.querySelectorAll('.reveal-element');
+        revealElements.forEach(el => el.classList.add('will-animate'));
+
+        // 2. Observer para animaciones al scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const targets = entry.target.querySelectorAll('.will-animate');
+                    targets.forEach(el => el.classList.remove('will-animate'));
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const slides = document.querySelectorAll('.slide-container');
+        slides.forEach(slide => observer.observe(slide));
+
+        // 3. Soporte para Teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                e.preventDefault();
+                scrollSlide(1);
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                scrollSlide(-1);
+            }
+        });
+    });
+
+    function scrollSlide(direction) {
+        const wrapper = document.getElementById('slides-wrapper');
+        const slideHeight = window.innerHeight;
+        const currentScroll = wrapper.scrollTop;
+        
+        let targetScroll = currentScroll + (direction * slideHeight);
+        
+        wrapper.scrollTo({
+            top: targetScroll,
+            behavior: 'smooth'
+        });
+    }
+
+    function goToSlide(slideIndex) {
+        const targetSlide = document.getElementById(`slide-${slideIndex}`);
+        const wrapper = document.getElementById('slides-wrapper');
+        
+        if (targetSlide && wrapper) {
+            const topPos = targetSlide.offsetTop;
+            wrapper.scrollTo({
+                top: topPos,
+                behavior: 'smooth'
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
